@@ -2,26 +2,25 @@ with open('day8.txt') as f:
     lines = []
     outputs = []
     for line in f.readlines():
-        lines.append(line[:line.index('|')-1].split(' '))
-        outputs.append(line[line.index('|')+2:].rstrip())
+        lines.append(line[:line.index('|')-1].split(' '))       # gets the first bit of the line before the |
+        outputs.append(line[line.index('|')+2:].rstrip())       # gets the output digits after |
 
 counter = 0
-
 for line in lines:
     for chars in line:
-        if len(chars) in [2,3,4,7]:
+        if len(chars) in [2,3,4,7]:         # day 1 was simple, only had to count digits which were immediatly solvable
             counter+=1
-
+    
 #Day 2
 
-def evaluate_line(line):
-    sixes = []
-    for thing in line:
-        if len(thing) == 2:
-            five_six = thing
-        elif len(thing) == 6:
-            sixes.append(thing)
-        elif len(thing) == 3:
+def evaluate_line(line):            # i don't want to talk about it..                                                           my positions, for reference.
+    sixes = []                          #                                                                                           1 1
+    for thing in line:                  # logic goes something like - use seven and one to find out which letter is pos 1          2   6
+        if len(thing) == 2:             # then using every six-letter combination you can figure out position 5 and 6              2   6
+            five_six = thing            # then somehow using the digits of the four letter combination                              7 7
+        elif len(thing) == 6:           # you can find position 7, 2 and 4, then 3 follows as the only unallocated letter          3   5
+            sixes.append(thing)         # it works, so..                                                                           3   5
+        elif len(thing) == 3:           #                                                                                           4 4
             sevens = thing
         elif len(thing) == 4:
             fours = thing
