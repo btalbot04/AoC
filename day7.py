@@ -1,9 +1,9 @@
 import math
 
-def fuel(data, goal):
-    fuel = 0
-    for num in data:
-        diff = abs(num - goal)
+def fuel(data, goal):                   # basically takes the coordinates, finds the amount of fuel to get every number to a specified position
+    fuel = 0                            # then runs this function for each coordinate goal between 1 and 1000 and then we take the answer
+    for num in data:                    # that used the least amount of fuel
+        diff = abs(num - goal)          # rather inefficient but we move
         fuel += (diff/2)*(diff+1)
 
     return fuel
